@@ -9,6 +9,7 @@ import {SvgVexFlowBackend} from "./../MusicalScore/Graphical/VexFlow/SvgVexFlowB
 import {CanvasVexFlowBackend} from "./../MusicalScore/Graphical/VexFlow/CanvasVexFlowBackend";
 import {MusicSheet} from "./../MusicalScore/MusicSheet";
 import {Cursor} from "./Cursor";
+import {Highlighter} from "./Highlighter";
 import {MXLHelper} from "../Common/FileIO/Mxl";
 import {Promise} from "es6-promise";
 import {AJAX} from "./AJAX";
@@ -60,6 +61,7 @@ export class OpenSheetMusicDisplay {
     }
 
     public cursor: Cursor;
+    public highlighter: Highlighter;
     public zoom: number = 1.0;
 
     private container: HTMLElement;
@@ -142,6 +144,8 @@ export class OpenSheetMusicDisplay {
         if (this.drawingParameters.drawCursors && this.cursor) {
             this.cursor.init(this.sheet.MusicPartManager, this.graphic);
         }
+        this.highlighter = new Highlighter(this.innerElement, this);
+        this.highlighter.init(this.graphic);
         log.info(`Loaded sheet ${this.sheet.TitleString} successfully.`);
         return Promise.resolve({});
     }
@@ -178,6 +182,7 @@ export class OpenSheetMusicDisplay {
         if (this.drawingParameters.drawCursors && this.cursor) {
             // Update the cursor position
             this.cursor.update();
+            this.highlighter.update();
         }
     }
 
