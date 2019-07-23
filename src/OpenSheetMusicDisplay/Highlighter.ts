@@ -97,7 +97,7 @@ export class Highlighter {
       return;
     }
 
-    if (staffIndex > 0) {
+    if (staffIndex >= 0) {
       const measure: GraphicalMeasure = this.graphic.MeasureList[measureIndex][staffIndex];
       this.updateMeasureHighlighter(measure, highlighterElement, color)
     }
