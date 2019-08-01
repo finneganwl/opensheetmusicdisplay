@@ -131,6 +131,7 @@ export class InstrumentReader {
     let lastNoteWasGrace: boolean = false;
     try {
       const xmlMeasureListArr: IXmlElement[] = this.xmlMeasureList[this.currentXmlMeasureIndex].elements();
+      this.currentMeasure.MeasureNumber = parseInt(this.xmlMeasureList[this.currentXmlMeasureIndex].attribute('number').value) // wcf read measure numbers instead of just using counter
       for (const xmlNode of xmlMeasureListArr) {
         if (xmlNode.name === "note") {
           let printObject: boolean = true;

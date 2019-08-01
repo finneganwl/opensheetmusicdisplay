@@ -364,7 +364,8 @@ export class MusicSheetReader /*implements IMusicSheetReader*/ {
             sourceMeasureCounter++;
         }
         this.currentMeasure.Duration = maxInstrumentDuration;
-        this.currentMeasure.MeasureNumber = sourceMeasureCounter;
+        // wcf dont use counter, it gets set by reader so we get source 
+        //this.currentMeasure.MeasureNumber = sourceMeasureCounter;
         for (let i: number = 0; i < instrumentsDurations.length; i++) {
             const instrumentsDuration: Fraction = instrumentsDurations[i];
             if (

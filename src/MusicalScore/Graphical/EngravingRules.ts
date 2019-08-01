@@ -315,7 +315,7 @@ export class EngravingRules {
 
         // Tuplets, MeasureNumber and TupletNumber Labels
         this.measureNumberLabelHeight = 1.5 * EngravingRules.unit;
-        this.measureNumberLabelOffset = 2;
+        this.measureNumberLabelOffset = 1;// wcf show measurenumber labels every measure
         this.tupletsRatioed = false;
         this.tupletsBracketed = false;
         this.tripletsBracketed = false; // special setting for triplets, overrides tuplet setting (for triplets only)

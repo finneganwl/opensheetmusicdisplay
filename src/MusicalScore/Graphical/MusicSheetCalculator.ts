@@ -416,13 +416,17 @@ export abstract class MusicSheetCalculator {
                 currentMeasureNumber = measure.MeasureNumber;
             }
 
+            // wcf show all measure numbers including the first one
+            this.calculateSingleMeasureNumberPlacement(measure, staffLine, musicSystem);
+
             if ((measure.MeasureNumber === currentMeasureNumber ||
                 measure.MeasureNumber === currentMeasureNumber + this.rules.MeasureNumberLabelOffset) &&
                 !measure.parentSourceMeasure.ImplicitMeasure) {
-                if (measure.MeasureNumber !== 1 ||
-                    (measure.MeasureNumber === 1 && measure !== staffLine.Measures[0])) {
-                    this.calculateSingleMeasureNumberPlacement(measure, staffLine, musicSystem);
-                }
+                // wcf show all measure numbers including the first one
+                //if (measure.MeasureNumber !== 1 ||
+                    //(measure.MeasureNumber === 1 && measure !== staffLine.Measures[0])) {
+                    //this.calculateSingleMeasureNumberPlacement(measure, staffLine, musicSystem);
+                //}
                 currentMeasureNumber = measure.MeasureNumber;
             }
         }
