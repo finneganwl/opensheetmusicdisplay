@@ -179,7 +179,7 @@ export class OpenSheetMusicDisplay {
         this.drawer.scale(this.zoom);
         // Finally, draw
         this.drawer.drawSheet(this.graphic);
-        if (this.drawingParameters.drawCursors && this.cursor) {
+        if (this.drawingParameters.drawCursors && this.cursor && this.highlighter) {
             // Update the cursor position
             this.cursor.update();
             this.highlighter.update();
@@ -194,6 +194,9 @@ export class OpenSheetMusicDisplay {
     /** Clears what OSMD has drawn on its canvas. */
     public clear(): void {
         this.drawer.clear();
+        if (this.highlighter) {
+            this.highlighter.clear()
+        }
         this.reset(); // without this, resize will draw loaded sheet again
     }
 

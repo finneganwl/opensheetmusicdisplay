@@ -186,6 +186,21 @@ export class Highlighter {
     this.hidden = true;
   }
 
+  public clear(): void {
+    Object.keys(this.highlighterElements).forEach(measureIndex => {
+      Object.keys(this.highlighterElements[measureIndex]).forEach(staffIndex => {
+        if (this.isValidMeasure(measureIndex, staffIndex)) {
+          const highlighterElement: HTMLImageElement = this.highlighterElements[measureIndex][staffIndex].highlighterElement
+          // remove from dom
+          this.container.removeChild(highlighterElement);
+        }
+      })
+    })
+
+    // reset highlighterElements
+    this.highlighterElements = {};
+  }
+
   private updateStyle(highlighterElement: HTMLImageElement, width: number, color: string): void {
     const c: HTMLCanvasElement = document.createElement("canvas");
     c.width = highlighterElement.width;
